@@ -1,0 +1,43 @@
+{
+  "name": "fprint",
+  "version": "1.0.0",
+  "description": "returns hash digest (fingerprint) of a given buffer, file by it's absolute or relative path or stream in node.js",
+  "main": "./lib/index.js",
+  "scripts": {
+    "prepublish": "./node_modules/.bin/babel -d ./lib --optional es7.objectRestSpread,es7.classProperties,es7.decorators ./src",
+    "test": "./node_modules/.bin/mocha --require ./test/babelhook.js -R spec test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makeomatic/fingerprint.git"
+  },
+  "keywords": [
+    "hash",
+    "digest",
+    "fingerprint",
+    "static",
+    "asset",
+    "md5",
+    "sha"
+  ],
+  "author": "Vitaly Aminev <v@makeomatic.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makeomatic/fingerprint/issues"
+  },
+  "homepage": "https://github.com/makeomatic/fingerprint#readme",
+  "dependencies": {
+    "bluebird": "^3.0.6",
+    "callsite": "^1.0.0",
+    "isstream": "^0.1.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "chai": "^3.4.1",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.0.0",
+    "eslint-plugin-mocha": "^1.1.0",
+    "glob": "^6.0.1",
+    "mocha": "^2.3.4"
+  }
+}
