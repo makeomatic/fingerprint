@@ -1,5 +1,7 @@
 # Node.js file fingerprinting
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/makeomatic/fingerprint.svg)](https://greenkeeper.io/)
+
 Returns hash digest (fingerprint) of a given file or stream in node.js
 Any hash algorithm that node.js crypto supports can be given.
 
