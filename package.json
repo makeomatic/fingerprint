@@ -2,7 +2,7 @@
   "name": "fprint",
   "version": "1.0.0",
   "description": "returns hash digest (fingerprint) of a given buffer, file by it's absolute or relative path or stream in node.js",
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "check-types": "tsc --noEmit",
     "prepack": "tsc --outDir dist --sourceMap --declaration",
