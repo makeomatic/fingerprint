@@ -64,7 +64,6 @@ export function digestStream(
 
     stream.on('end', () => resolve(hash.digest('hex')));
 
-    stream.resume();
   });
 }
 
