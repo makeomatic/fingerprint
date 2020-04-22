@@ -81,7 +81,7 @@ function isString(x: any): x is string {
  * @param  {string}                         algorithm - any supported algorithm by node.js crypto module https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm
  * @return {Promise<string>}
  */
-export function createFingerprint(
+export async function createFingerprint(
   source: Buffer | string | ReadStream,
   algorithm: string
 ): Promise<string> | never {
