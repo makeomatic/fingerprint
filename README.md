@@ -31,7 +31,7 @@ let shasum = await fprint(file, 'sha256');
 
 let sha256 = fprint(stream, 'sha256');
 
-let shasum = fprint(filepath, 'sha256')
+let shasum = await fprint(filepath, 'sha256')
 ```
 
 ### digestSync
