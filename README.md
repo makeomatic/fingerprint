@@ -17,7 +17,7 @@ Package includes TypeScript definitions.
 function fprint(source: Buffer | string | ReadStream, algorithm: string): Promise<string>
 ```
 
-Returns a Promise that resolves to a string with algorithm hex hash digest for a given *input*`.
+Returns a Promise that resolves to a string with algorithm hex hash digest for a given *input*.
 *input* - either `Buffer`, `ReadStream` or file path. Supports both relative and absolute paths
 
 ```ts
