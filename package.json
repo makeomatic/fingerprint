@@ -6,6 +6,7 @@
   "scripts": {
     "check-types": "tsc --noEmit",
     "prepack": "tsc --outDir dist --sourceMap --declaration",
+    "lint": "xo",
     "test": "mocha --require=ts-node/register -R spec test/index.ts"
   },
   "repository": {
