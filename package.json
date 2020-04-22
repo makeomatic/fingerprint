@@ -28,9 +28,6 @@
   },
   "homepage": "https://github.com/makeomatic/fingerprint#readme",
   "dependencies": {
-    "@types/callsite": "1.0.30",
-    "@types/isstream": "0.1.0",
-    "@types/node": "13.13.1",
     "callsite": "^1.0.0",
     "isstream": "^0.1.2",
     "typescript": "3.8.3"
@@ -39,6 +36,9 @@
     "@types/chai": "4.2.11",
     "@types/glob": "7.1.1",
     "@types/mocha": "7.0.2",
+    "@types/callsite": "1.0.30",
+    "@types/isstream": "0.1.0",
+    "@types/node": "13.13.1",
     "chai": "^4.2.0",
     "glob": "^7.1.6",
     "mocha": "^7.1.1",
