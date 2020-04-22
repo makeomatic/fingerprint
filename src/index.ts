@@ -51,7 +51,6 @@ export function digestStream(
   stream: ReadStream,
   algorithm: string
 ): Promise<string> {
-
   return new Promise((resolve, reject) => {
     const hash = createHash(algorithm);
 
@@ -60,7 +59,6 @@ export function digestStream(
     stream.on('error', (error) => reject(error));
 
     stream.on('end', () => resolve(hash.digest('hex')));
-
   });
 }
 
