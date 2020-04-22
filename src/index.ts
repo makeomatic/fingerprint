@@ -51,9 +51,6 @@ export function digestStream(
   stream: ReadStream,
   algorithm: string
 ): Promise<string> {
-  if (!stream.isPaused()) {
-    stream.pause();
-  }
 
   return new Promise((resolve, reject) => {
     const hash = createHash(algorithm);
