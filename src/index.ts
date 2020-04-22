@@ -88,7 +88,7 @@ export function createFingerprint(
 ): Promise<string> | never {
   // We have file buffered in memory, create digest on it
   if (Buffer.isBuffer(source)) {
-    return Promise.resolve(digestSync(source, algorithm));
+    return digestSync(source, algorithm);
   }
 
   if (isReadable(source)) {
