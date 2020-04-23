@@ -9,8 +9,8 @@
     "compile": "tsc -b tsconfig.build.json",
     "prepublishOnly": "yarn compile",
     "lint": "eslint --ext .ts ./src",
-    "pretest": "yarn lint && yarn compile",
-    "test": "mocha --require=ts-node/register -R spec test/index.ts"
+    "pretest": "yarn compile",
+    "test": "yarn lint && yarn check-types && mocha --require=ts-node/register -R spec test/index.ts"
   },
   "repository": {
     "type": "git",
