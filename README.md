@@ -7,46 +7,56 @@ Any hash algorithm that node.js crypto supports can be given.
 
 `npm i fprint -S`
 
-## Usage
+## API
 
-### fprint(input, algorithm, [next])
+Package includes TypeScript definitions.
 
-Returns `algorithm` hex hash digest for a given `input`.
-Supports both promise and callback interfaces - either pass `next<err, digest>` as a 3d argument
-or operate on a returned promise.
+### fprint
 
-`input` - either `Buffer`, `ReadableStream` or file path. Supports both relative and absolute paths
+```ts
+function fprint(source: Buffer | string | ReadStream, algorithm: string): Promise<string>
+```
 
-#### Examples:
+Returns a Promise that resolves to a string with algorithm hex hash digest for a given *input*.
+*input* - either `Buffer`, `ReadStream` or file path. Supports both relative and absolute paths
 
-```js
+```ts
 const fprint = require('fprint');
 const fs = require('fs');
 const filepath = '/path/to/file';
 const stream = fs.createReadStream(filepath);
 const fileContents = fs.readFileSync(filepath);
 
-fprint(file, 'sha256').then(shasum => {
-  // operate on sha256 digest
-});
+let shasum = await fprint(file, 'sha256');
 
-fprint(stream, 'sha256').then(shasum => {
-  // operate on sha256 digest
-});
+let sha256 = fprint(stream, 'sha256');
 
-fprint(filepath, 'sha256').then(shasum => {
-  // operate on sha256 digest
-})
+let shasum = await fprint(filepath, 'sha256')
 ```
 
-### fprint.sync(buffer, algorithm)
+### digestSync
 
-```js
+```ts
+function digestSync(buffer: Buffer, algorithm: string): string
+```
+
+Accepts Buffer and creates it's digest
+
+```ts
+const { digestSync } = require('fprint');
+
 const fs = require('fs');
-const fprint = require('fprint');
 const file = fs.readFileSync('/path/to/file.min.js');
-const md5 = fprint.sync(file, 'md5');
+const md5 = digestSync(file, 'md5');
 ```
+
+### digestStream
+
+```ts
+function digestStream(stream: ReadStream, algorithm: string): Promise<string>
+```
+
+Accepts stream and creates it's digest
 
 ## Testing
 
