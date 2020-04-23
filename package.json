@@ -1,6 +1,6 @@
 {
   "name": "fprint",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "returns hash digest (fingerprint) of a given buffer, file by it's absolute or relative path or stream in node.js",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
