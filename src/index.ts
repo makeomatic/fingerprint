@@ -1,31 +1,31 @@
-import {createHash} from 'crypto';
-import * as path from 'path';
-import {ReadStream, createReadStream} from 'fs';
-import * as callsite from 'callsite';
-import * as isstream from 'isstream';
+import {createHash} from 'crypto'
+import * as path from 'path'
+import {ReadStream, createReadStream} from 'fs'
+import * as callsite from 'callsite'
+import * as isstream from 'isstream'
 
 /**
  * Utility function to create stream based on file's location, supports both relative and absolute paths
  * @param  {String} location [description]
  * @return {ReadStream}
  */
-function createStream(location: string): ReadStream | undefined {
+function createStream(location: string): ReadStream | void {
   if (path.isAbsolute(location)) {
-    return createReadStream(location);
+    return createReadStream(location)
   }
 
   // For relative paths
-  const stack = callsite();
-  const length = stack.length;
+  const stack = callsite()
+  const length = stack.length
 
   // Filter out the file itself
-  let iterator = 0;
+  let iterator = 0
   while (iterator < length) {
-    const call = stack[iterator++];
-    const filename = call.getFileName();
+    const call = stack[iterator++]
+    const filename = call.getFileName()
     if (__filename !== filename) {
-      const source = path.resolve(path.dirname(filename), location);
-      return createReadStream(source);
+      const source = path.resolve(path.dirname(filename), location)
+      return createReadStream(source)
     }
   }
 }
@@ -37,8 +37,8 @@ function createStream(location: string): ReadStream | undefined {
  * @return {string}
  */
 export function digestSync(buffer: Buffer, algorithm: string): string {
-  const hash = createHash(algorithm).update(buffer);
-  return hash.digest('hex');
+  const hash = createHash(algorithm).update(buffer)
+  return hash.digest('hex')
 }
 
 /**
@@ -52,22 +52,22 @@ export function digestStream(
   algorithm: string
 ): Promise<string> {
   return new Promise((resolve, reject) => {
-    const hash = createHash(algorithm);
+    const hash = createHash(algorithm)
 
-    stream.on('data', (chunk) => hash.update(chunk));
+    stream.on('data', (chunk) => hash.update(chunk))
 
-    stream.on('error', (error) => reject(error));
+    stream.on('error', (error) => reject(error))
 
-    stream.on('end', () => resolve(hash.digest('hex')));
-  });
+    stream.on('end', () => resolve(hash.digest('hex')))
+  })
 }
 
 function isReadable(object: any): object is ReadStream {
-  return isstream.isReadable(object);
+  return isstream.isReadable(object)
 }
 
 function isString(x: any): x is string {
-  return typeof x === 'string';
+  return typeof x === 'string'
 }
 
 /**
@@ -82,23 +82,23 @@ export async function createFingerprint(
 ): Promise<string> | never {
   // We have file buffered in memory, create digest on it
   if (Buffer.isBuffer(source)) {
-    return digestSync(source, algorithm);
+    return digestSync(source, algorithm)
   }
 
   if (isReadable(source)) {
-    return digestStream(source, algorithm);
+    return digestStream(source, algorithm)
   }
 
   if (isString(source)) {
-    const stream = createStream(source);
+    const stream = createStream(source)
     if (stream) {
-      return digestStream(stream, algorithm);
+      return digestStream(stream, algorithm)
     }
   }
 
   throw new TypeError(
     'source must be either a buffer, readable stream or a string with absolute or relative path'
-  );
+  )
 }
 
-export default createFingerprint;
+export default createFingerprint
