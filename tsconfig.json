@@ -12,8 +12,7 @@
     "noImplicitReturns": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "preserveConstEnums": true,
-    "composite": true
+    "preserveConstEnums": true
   },
   "exclude": [
     "**/node_modules/**",

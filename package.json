@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "check-types": "tsc --noEmit -b tsconfig.build.json",
+    "check-types": "tsc --noEmit",
     "compile": "tsc -b tsconfig.build.json",
     "prepublishOnly": "yarn compile",
     "lint": "eslint --ext .ts ./src",
