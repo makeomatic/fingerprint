@@ -16,6 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/makeomatic/fingerprint.git"
   },
+  "files": [
+    "lib/",
+    "src/"
+  ],
   "keywords": [
     "hash",
     "digest",
